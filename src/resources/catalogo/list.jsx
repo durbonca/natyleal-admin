@@ -1,5 +1,5 @@
 import React from 'react'
-import { List, Datagrid, TextField, ImageField, TopToolbar, CreateButton} from 'react-admin';
+import { List, Datagrid, TextField, ImageField, ArrayField, ReferenceField, NumberField, TopToolbar, CreateButton} from 'react-admin';
 
 const ListActions = (props) => {
     return (
@@ -16,8 +16,13 @@ const list = (props) => {
            <Datagrid rowClick="edit">
                 <TextField source="titulo" />
                 <TextField source="descripcion" />
-                <TextField source="precio" />
+                <NumberField source="precio" />
                 <ImageField source="file.src" title="file.title" />
+                <ReferenceField label="categorias" source="categorias" reference="categorias">
+                    <ArrayField source="categorias">
+                        <TextField source="titulo" />
+                    </ArrayField>
+                </ReferenceField>
            </Datagrid>
         </List>
     )

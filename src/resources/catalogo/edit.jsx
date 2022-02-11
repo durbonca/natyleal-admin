@@ -1,5 +1,5 @@
 import React from 'react';
-import { Edit, AutocompleteArrayInput, ReferenceArrayInput, SimpleForm, TextInput, FileInput, ImageField, required } from 'react-admin';
+import { Edit, AutocompleteArrayInput, ReferenceArrayInput, NumberInput, SimpleForm, TextInput, FileInput, ImageField, required } from 'react-admin';
 
 const edit = (props) => {
     return (
@@ -10,9 +10,9 @@ const edit = (props) => {
             <FileInput style={{width: '100%'}} source="file" label="Imagenes" accept="image/*" >
                 <ImageField source="src" title="title" />
             </FileInput>
-            <TextInput style={{width: '100%'}} source="precio" />
+            <NumberInput style={{width: '100%'}} source="precio" />
             <ReferenceArrayInput source="categorias" reference="categorias">
-                <AutocompleteArrayInput optionText='title' />            
+                <AutocompleteArrayInput optionText='titulo' />            
             </ReferenceArrayInput>      
         </SimpleForm>
     </Edit>
