@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+import { Admin, Resource } from 'react-admin';
+import {
+  FirebaseAuthProvider,
+  FirebaseDataProvider,
+} from 'react-admin-firebase';
+import config from './utils/firebaseConfig';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { catalogoList, catalogoEdit, catalogoCreate } from './resources/catalogo';
+
+const options = { logging: true };
+
+const dataProvider = FirebaseDataProvider(config, options);
+const authProvider = FirebaseAuthProvider(config, options);
+const App = () => (
+    <Admin dataProvider={dataProvider} authProvider={authProvider} >  
+      <Resource name="catalogo" list={catalogoList} edit={catalogoEdit} create={catalogoCreate}/>
+    </Admin>
+  )
+
 
 export default App;
